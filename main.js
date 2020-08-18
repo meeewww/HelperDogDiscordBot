@@ -290,5 +290,5 @@ client.on('message', message => {
 
 
 
-client.login('NzQ0NTAzNjI2MzgyMTgwMzky.XzkLCA.qsdl7hHsFBx6zsBFKaiytqJi8gg');
+client.login('YOUR_TOKEN_HERE'); //you can get this at https://discord.com/developers
 
