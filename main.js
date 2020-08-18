@@ -7,7 +7,7 @@ const prefix = 'q!';
 
 client.once('ready', () => {
     console.log('online');
-    client.user.setActivity('Minecraft Songs',  { type: 'LISTENING'}).catch(console.error);
+    client.user.setActivity('Set A custom Status here',  { type: 'LISTENING'}).catch(console.error); //Replace 'LISTENING' with PLAYING, WATCHING, STREAMING
 })
 
 
