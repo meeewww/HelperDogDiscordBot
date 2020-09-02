@@ -3,13 +3,13 @@ const Embed = new Discord.MessageEmbed()
 const client = new Discord.Client
 
 
-const prefix = 'q!';
+const prefix = '!!';
 
 client.once('ready', () => {
-    console.log('online');
-    client.user.setActivity('Set A custom Status here',  { type: 'LISTENING'}).catch(console.error); //Replace 'LISTENING' with PLAYING, WATCHING, STREAMING
-})
-
+    console.log('working');
+    
+    
+}) 
 
 client.on('message', message => {
     if(!message.content.startsWith(prefix) || message.author.bot) return;
@@ -19,7 +19,7 @@ client.on('message', message => {
     switch(args[0]){
 
 
-        case "qotd":
+        case "poll":
             const Embed = new Discord.MessageEmbed()
             .setColor('0xFFC300')
             .setImage('https://cdn.discordapp.com/attachments/711640811074486372/744511779614490664/tenor.gif')
@@ -37,12 +37,21 @@ client.on('message', message => {
             let msgArgs = args.slice(1).join(" ")
 
             message.channel.send("📋" + "*" +  "React to the message above and I will record it" + "*").then(sentMessage => {
-                message.react("744492638090166354");
-                message.react("744492638048223332");
+                message.react("737633975903846498");
+                message.react("737633971739033688");
             });
 
 
         break;
+    
+
+
+
+
+
+        
+            
+    
 
 
 
@@ -57,8 +66,8 @@ client.on('message', message => {
     switch(args[0]){
 
 
-        case "poll":
-            const Embed = new Discord.MessageEmbed()
+        case "say":
+            const say = new Discord.MessageEmbed()
             .setColor('0xFFC300')
             .setImage('https://cdn.discordapp.com/attachments/711640811074486372/744511779614490664/tenor.gif')
             .setTitle('Looks like you need some help! We are here to help')
@@ -68,15 +77,15 @@ client.on('message', message => {
 
 
             if(!args[1]){
-                message.channel.send(Embed);
+                message.channel.send(say);
                 break;
             }
             
             let msgArgs = args.slice(1).join(" ")
 
-            message.channel.send("📋" + "*" + "React to the message above and I will record it" + "*").then(sentMessage => {
-                message.react("744492638090166354");
-                message.react("744492638048223332");
+            message.channel.send(msgArgs).then(sentMessage => {
+                message.react("✅");
+                
             });
 
 
@@ -134,10 +143,10 @@ client.on('message', message => {
             .setColor('#7289da')
             .setTitle('Help')
             .setURL('https://discord.gg/qWpstWx')
-            .setDescription('`Utility`\n`q!poll (subject)` `q!qotd (subject)` `q!types`\n\n`fun`\n`q!dog`\n\n `About Stuff`\n`premid` `statuspage` `Minecraft`\n\n `Other`\n `Invite` `play - look for others to play with you`')
+            .setDescription('`Utility`\n`q!poll (subject)` `q!qotd (subject)` `q!types`\n\n`fun`\n`q!dog` `soss` `karen` `pup` `school`\n\n `About Stuff`\n`premid` `statuspage` `Minecraft` `google`\n\n `Other`\n `Invite` `play - look for others to play with you` `Support` `servers` `ads - get free ads`\n\n`Directory`\n`Sorry None here (╯°□°）╯︵ ┻━┻`\n\n`MEMES`\n`eadiscord` ')
             .setFooter('There will be more soon!')
-            .setThumbnail('https://cdn.discordapp.com/attachments/744534403350265907/744537282639560844/dogs5.jpg')
-            .setImage('https://cdn.discordapp.com/attachments/744534403350265907/744537282639560844/dogs5.jpg')
+            .setThumbnail('https://media.discordapp.net/attachments/750009148221161542/750465426995150898/image0.gif')
+            //https://cdn.discordapp.com/attachments/744534403350265907/744537282639560844/dogs5.jpg
 
 
             if(!args[1]){
@@ -239,12 +248,13 @@ client.on('message', message => {
                 const minecraft = new Discord.MessageEmbed()
                 .setColor('00ff02')
                 .setTitle('Minecraft')
-                .setDescription('With new games, new updates, and new ways to play, join one of the biggest communities in gaming and start crafting today!\n\n`SPEEDRUN RULES`\n1. No texture/resource packs.\n2. No Mods.\n3. Difficulty cannot be changed once the timing starts.\n4. All runs are single player unless the category is "Co-op".\n5. You can use any release version of Minecraft (no snapshots, anything beta or earlier, or pre-releases).\n6. You can use any version of Java. (It is known to affect seed generation in some cases).\n7. Bonus Chests and cheats are not allowed...\nMore rules here: https://www.speedrun.com/mc/thread/gq26u/1#3znt1`\n\n`Servers`\nHypixel `mc.hypixel.net - ONLINE`\nHypixel China `x19hypixel.nie.netease.com - OFFLINE`\nMinesuperior! `hub.mcs.gg - online`\nInvatedLands `play.invadedlands.net - ONLINE`')
+                .setDescription('With new games, new updates, and new ways to play, join one of the biggest communities in gaming and start crafting today!\n\n`SPEEDRUN RULES`\n1. No texture/resource packs.\n2. No Mods.\n3. Difficulty cannot be changed once the timing starts.\n4. All runs are single player unless the category is "Co-op".\n5. You can use any release version of Minecraft (no snapshots, anything beta or earlier, or pre-releases).\n6. You can use any version of Java. (It is known to affect seed generation in some cases).\n7. Bonus Chests and cheats are not allowed...\nMore rules here: https://www.speedrun.com/mc/thread/gq26u/1#3znt1`\n\n`Servers`\nHypixel `mc.hypixel.net - ONLINE`\nHypixel China `x19hypixel.nie.netease.com - OFFLINE`\nMinesuperior! `hub.mcs.gg - online`\nInvatedLands `play.invadedlands.net - ONLINE`\n\n`Minecraft Youtubers`\nDanTDM.\nPopularMMOs.\nPrestonPlayz - Minecraft.\nUnspeakableGaming.\nJelly.\nand many more! https://blog.feedspot.com/minecraft_youtube_channels/\n\n```Skeepy```\n```skeppy is fzafzk irl```')
                 .setImage('https://cdn.discordapp.com/attachments/711640811074486372/744635219620921374/minecraft.png')
                 .setThumbnail('https://cdn.discordapp.com/attachments/711640811074486372/744635219620921374/minecraft.png')
                 .setURL('https://minecraft.net')
                 if(!args[1]){
                     message.channel.send(minecraft);
+                    break;
                 }
 
 
@@ -269,6 +279,90 @@ client.on('message', message => {
                 }
             
 
+            case "upgrade":
+                const upgrade = new Discord.MessageEmbed()
+                .setColor('47fff')
+                .setTitle('Upgrade To Premum')
+                .setDescription('This is not a bot yet... ')
+                if(!args[1]){
+                    message.channel.send(upgrade);
+                    break;
+                }
+            
+            case "disios":
+                const disios = new Discord.MessageEmbed()
+                .setTitle('Discord FIX IOS APP NOW OR BAN')
+                .setDescription('Discord fix your iOS app Discord fix your iOS app Discord fix your iOS app Discord fix your iOS app Discord fix your iOS app Discord fix your iOS app Discord fix your iOS app Discord fix your iOS app. yea thats the stuff thats the stuff thats the stuff thats the stuff thats the stuff thats the stuff thats the stuff thats the stuff thats the stuff thats the stuff thats the stuff thats the stuff thats the stuff thats the stuff thats the stuff thats the stuff thats the stuff thats the stuff thats the stuff thats the stuff thats the stuff thats the stuff thats the stuff ')
+                .setColor('fffff')
+                if(!args[1]){
+                    message.channel.send(disios);
+                    break;
+                }
+            case "randomkittens":
+                const randomkittens = new Discord.MessageEmbed()
+                .setImage('https://cdn.discordapp.com/attachments/745231466597974118/746557801983377478/tenor.gif')
+                if(!args[1]){
+                    message.channel.send(randomkittens)
+                    break;
+                
+        
+
+                }
+
+            case "karen":
+                const karen = new Discord.MessageEmbed()
+                .setTitle('The karen Song')
+                .setURL('https://www.youtube.com/watch?v=WEOfNqu5mi4')
+                .setDescription('Karen called the manager Oh Frick Karen took the kids again Deal with it She preaches live laugh love She gets a weekly haircut Never vaccinates her kids And now shes had enough Karens coming for yah Oh no Karens gonna floor yah You better go She spends most her days on Facebook Whilst complaining on the phone And when it comes to healthcare She knows all there is to know Like the Harry Potter Karen We can not let em win Hey girl try to speak to your own manager within You cant get a free big Mac Please dont call me CEO Your coupon code expired So please just let it go Karen called the manager Oh Frick Karen took the kids again Deal with it She preaches live laugh love She gets a weekly haircut Never vaccinates her kids And now shes had enough Karens coming for yah Oh no Karens gonna floor yah You better go She spends most her days on Facebook Whilst complaining on the phone And when it comes to healthcare She knows all there is to know Karen youre a douchebag Take a second, maybe think back Theres no need to be so mean hun Take a chill pill try to have fun The poor cashier, leave him alone Let him work now and just go home Stop complaining, no need to scream Go back to Facebook, post minion memes Karen called the manager Oh Frick Karen took the kids again Deal with it She preaches live laugh love She gets a weekly haircut Never vaccinates her kids And now shes had enough Karens coming for yah Oh no Karens gonna floor yah You better go She spends most her days on Facebook Whilst complaining on the phone And when it comes to healthcare She knows all there is to know')
+                .setColor('ff0000')
+                .setFooter('Note: when you use this command karen will call us')
+                if(!args[1]){
+                    message.channel.send(karen)
+                    break;
+                }
+
+
+
+            case "pup":
+                const pup = new Discord.MessageEmbed()
+                .setTitle('PUPPY!!!!!!!!')
+                .setImage('https://cdn.discordapp.com/attachments/712065023736021104/747422938982252544/tenor.gif')
+                .setFooter('This will switch out next week!')
+                .setColor('ffbb00')
+                if(!args[1]){
+                    message.channel.send(pup)
+                    break;
+                }
+               
+            case "ads":
+                const ads = new Discord.MessageEmbed()
+                .setTitle('Grow & Advertise')
+                .setDescription('__**Welcome To Grow & Advertise**__\n\nDo you want to find servers to join or get some members?\n\n__**We offer**__\n:speaking_head:  Talking channels\n:smiling_face_with_3_hearts: Advert channels\n:underage: no NSFW servers\n:hugging: Friendly staff\n\n')
+                .setURL('https://discord.gg/gdbWttU')
+                if(!args[1]){
+                    message.channel.send(ads)
+                    break;
+                }
+            case "school":
+                const school = new Discord.MessageEmbed()
+                .setImage(' https://i.redd.it/gh9aswlfchj51.jpg')
+                .setTitle('Is your school this COOL?')
+                .setURL('https://www.reddit.com/r/discordapp/comments/ihf72n/is_your_school_this_cool/')
+                if(!args[1]){
+                    message.channel.send(school)
+                    break;
+                }
+            case "eadiscord":
+                const eadiscord = new Discord.MessageEmbed()
+                .setTitle('If EA owned discord')
+                .setDescription('EA: Would you like to trun on dark mode for $19.99\nMe: No I can use force dark mode\nEA: Ok :(')
+                .setImage('https://media.tenor.com/images/a10b1ec07525e6bd7a7be02677036908/tenor.gif')
+                .setColor('7289DA')
+                if(!args[1]){
+                    message.channel.send(eadiscord)
+                    break;
+                }               
+            
     }
 
             
@@ -290,5 +384,7 @@ client.on('message', message => {
 
 
 
-client.login('YOUR_TOKEN_HERE'); //you can get this at https://discord.com/developers
+client.login('NzQ0NTAzNjI2MzgyMTgwMzky.XzkLCA.XWljCcMUp56a5_ihfm34LMxhWBk');
+
+
 
