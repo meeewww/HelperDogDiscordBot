@@ -384,7 +384,7 @@ client.on('message', message => {
 
 
 
-client.login('NzQ0NTAzNjI2MzgyMTgwMzky.XzkLCA.XWljCcMUp56a5_ihfm34LMxhWBk');
+client.login('Token');
 
 
 
