@@ -506,7 +506,7 @@ client.on('message', message => {
 
 
 
-client.login('NzQ0NTAzNjI2MzgyMTgwMzky.XzkLCA.kNECi5Vi8pU3DhIk-Dp6tR6yR3Y');
+client.login('ToKeN');
 
 
 
