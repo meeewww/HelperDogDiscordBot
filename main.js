@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const Embed = new Discord.MessageEmbed()
 const client = new Discord.Client
+const config = require('./config.json');
+const cooldowns = new Discord.Collection();
 
 
 const prefix = '!!';
@@ -8,8 +10,15 @@ const prefix = '!!';
 client.once('ready', () => {
     console.log('working');
     
+   
+
+    
+   
+    
     
 }) 
+
+
 
 client.on('message', message => {
     if(!message.content.startsWith(prefix) || message.author.bot) return;
@@ -100,6 +109,51 @@ client.on('message', message => {
     }
     
 
+    switch(args[0]){
+
+
+        case "idea":
+            const Embed = new Discord.MessageEmbed()
+            .setColor('0xFFC300')
+            .setImage('https://cdn.discordapp.com/attachments/711640811074486372/744511779614490664/tenor.gif')
+            .setTitle('Looks like you need some help! We are here to help')
+            .setDescription('This is a poll for voteing on ideas. Useage: ```!!idea [idea poll]```')
+            .setFooter('Sent By our dev team @ SeanLovesBlobs Develpomet')
+            
+
+
+            if(!args[1]){
+                message.channel.send(Embed);
+                break;
+            }
+            
+            let msgArgs = args.slice(1).join(" ")
+
+            message.channel.send("Shold We add/do: " + "**`" + msgArgs + "`**").then(sentMessage => {
+                message.react("737633975903846498");
+                message.react("737633971739033688");
+            });
+
+
+        break;
+    
+
+
+
+
+
+        
+            
+    
+
+
+
+
+        
+
+        
+    }
+
 
     switch(args[0]){
 
@@ -143,12 +197,11 @@ client.on('message', message => {
             .setColor('#7289da')
             .setTitle('Help')
             .setURL('https://discord.gg/qWpstWx')
-            .setDescription('`Utility`\n`q!poll (subject)` `q!qotd (subject)` `q!types`\n\n`fun`\n`q!dog` `soss` `karen` `pup` `school`\n\n `About Stuff`\n`premid` `statuspage` `Minecraft` `google`\n\n `Other`\n `Invite` `play - look for others to play with you` `Support` `servers` `ads - get free ads`\n\n`Directory`\n`Sorry None here (╯°□°）╯︵ ┻━┻`\n\n`MEMES`\n`eadiscord` ')
-            .setFooter('There will be more soon!')
-            .setThumbnail('https://media.discordapp.net/attachments/750009148221161542/750465426995150898/image0.gif')
+            .setDescription('`Utility`\n`q!poll (subject)` `q!qotd (subject)` `q!types`\n\n`fun`\n`q!dog` `soss` `karen` `pup` `school` `hug`\n\n `About Stuff`\n`premid` `statuspage` `Minecraft` `google`\n\n `Other`\n `Invite` `play - look for others to play with you` `Support` `servers` `ads - get free ads`\n\n`Directory`\n`Sorry None here (╯°□°）╯︵ ┻━┻`\n\n`MEMES`\n`eadiscord` ')
+            .setFooter(`Server count: ${client.guilds.cache.size} Server name: ${message.guild.name} Total members:  ${message.guild.memberCount}`)
             //https://cdn.discordapp.com/attachments/744534403350265907/744537282639560844/dogs5.jpg
 
-
+            
             if(!args[1]){
                 message.channel.send(help);
                 break;
@@ -171,7 +224,7 @@ client.on('message', message => {
             .setColor('#7289da')
             .setTitle('PreMid')
             .setURL('https://premid.app/')
-            .setDescription('**What is Premid**\nPreMiD is a simple, configurable utility that allows you to\nshow what youre doing on the web in your Discord now playing status\n\n**Here is an example:**')
+            .setDescription('**What is Premid**\nPreMiD is a simple, configurable utility that allows you to\nshow what you\'re doing on the web in your Discord now playing status\n\n**Here is an example:**')
             .setImage('https://cdn.discordapp.com/attachments/711640811074486372/744530793321463888/premid.png')
             .setThumbnail('https://cdn.discordapp.com/attachments/711640811074486372/744531464275886160/premidlogo.png')
             .setFooter('Go to https://premid.app/ to download this or click on the blue premid at the top')
@@ -362,8 +415,77 @@ client.on('message', message => {
                     message.channel.send(eadiscord)
                     break;
                 }               
+            case "repo":
+                const repo = new Discord.MessageEmbed()
+                .setColor('7982DA')
+                .setTitle('Github repo and featre reqest')
+                .setDescription('Featue Reqest:\nhttps://forms.gle/3PJBBEGgJQ4WcbH17 \n\nGithub:\nhttps://github.com/SeanLovesMCDEV/HelperDogDiscordBot')
+                .setFooter('Note: The github will update every month')
+                if(!args[1]){
+                    message.channel.send(repo)
+                    break;
+                }
+            case "hug":
+                const hug = new Discord.MessageEmbed()
+                .setTitle('Hugs for wumpus')
+                .setImage('https://media1.tenor.com/images/dfa89aa3decd572c8ad49dee64549401/tenor.gif?itemid=17062907')
+                if(!args[1]){
+                    message.channel.send(hug)
+                    break;
+                }
+            case "user":
+                message.channel.send(`Your username: ${message.author.username}\nYour ID: ${message.author.id}\n**TIP:**\nUse \!\!av for you\'re avatar`);
+                break;
+
+            case "server":
+                message.channel.send(`Server name:**${message.guild.name}** \nTotal members:  **${message.guild.memberCount}**`);
+                break;
+
+            case "av":
+                if (!message.mentions.users.size) {
+                    return message.channel.send(`Your avatar: <${message.author.displayAvatarURL({ format: "png", dynamic: true })}>`);
+                }
             
+                const avatarList = message.mentions.users.map(user => {
+                    return `${user.username}'s avatar: <${user.displayAvatarURL({ format: "png", dynamic: true })}>`;
+                });
+            
+                // send the entire array of strings as a message
+                // by default, discord.js will `.join()` the array with `\n`
+                message.channel.send(avatarList);
+                break;
+
+            case "info":
+                const info = new Discord.MessageEmbed()
+                .setColor('00ff15')
+                .setTitle('Bot And Server Status')
+                .setDescription(`Server count: \`${client.guilds.cache.size}\` \n Server name: \`${message.guild.name}\` \n Total members:  \`${message.guild.memberCount}\`\nServer ID: \`${message.guild.id}\`\n\n\n\n**Bot Status**\nServers: Server count: \`${client.guilds.cache.size}\`\nShards: \`0/0\``)
+                .setFooter('Sent Form SeanlovesWumpus Bot Team', 'https://cdn.discordapp.com/attachments/712065023736021104/752812196723163187/3d6cf4ee464c53dc8c9bf5a5a19160ab.png')
+                .setTimestamp()
+
+
+                if(!args[1]){
+                    message.channel.send(info)
+                    break;
+                }
+            
+            case "Input":
+                message.channel.send('Outoput')
+                break;
+                
+
+            
+
+            
+
+
+               
+            
+
+
+
     }
+
 
             
             
@@ -374,7 +496,7 @@ client.on('message', message => {
     
     
 
-
+    
 
 
 
@@ -384,7 +506,17 @@ client.on('message', message => {
 
 
 
-client.login('Token');
+client.login('NzQ0NTAzNjI2MzgyMTgwMzky.XzkLCA.kNECi5Vi8pU3DhIk-Dp6tR6yR3Y');
 
 
 
+
+
+
+
+
+/// Info
+// .setFooter('Sent Form SeanlovesWumpus Bot Team', 'https://cdn.discordapp.com/attachments/752556939766136962/752806563026305064/dogs6_-_Copy.jpg')
+// .setTimestamp()
+// Discord.js Bot By Seanloveswumps Eamil: @ seanloveswumpus@gmail.com Github: https://github.com/SeanLovesMCDEV/HelperDogDiscordBot
+// Note: You can remove the credits but not down here :D
